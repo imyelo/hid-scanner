@@ -81,5 +81,23 @@ scanner.on('char', (char) => {
 })
 ```
 
+
+## Test
+```sh
+npm test
+```
+
+### Generate HEX fixture for testing
+```sh
+./test/helpers/generate-hex.js <product-name>
+```
+
+e.g.:
+
+```sh
+./test/helpers/generate-hex.js > ./test/fixtures/0.hex.txt
+```
+
+
 ## License
 MIT
