@@ -3,7 +3,7 @@ import sinon from 'sinon'
 import HID from 'node-hid'
 import { EventEmitter } from 'events'
 import fixture from './helpers/fixture'
-import Scanner from '../scanner'
+import Scanner from '../lib/scanner'
 
 test.beforeEach((t) => {
   const PRODUCT = 'FAKE'

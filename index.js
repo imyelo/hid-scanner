@@ -1,4 +1,4 @@
-const Scanner = require('./scanner')
+const Scanner = require('./lib/scanner')
 const scanner = new Scanner()
 
 scanner.on('char', (char) => {
