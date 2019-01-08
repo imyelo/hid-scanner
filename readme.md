@@ -99,5 +99,12 @@ e.g.:
 ```
 
 
+## References
+- https://gist.github.com/MightyPork/6da26e382a7ad91b5496ee55fdc73db2
+- https://source.android.com/devices/input/keyboard-devices.html
+- https://github.com/node-hid/node-hid/issues/228
+- https://www.usb.org/document-library/hid-usage-tables-112
+
+
 ## License
 MIT
