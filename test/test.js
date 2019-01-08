@@ -5,15 +5,26 @@ import { EventEmitter } from 'events'
 import fixture from './helpers/fixture'
 import Scanner from '../lib/scanner'
 
+const PRODUCT = 'FAKE_PRODUCT'
+const PATH = 'FAKE_PATH'
+
 test.beforeEach((t) => {
-  const PRODUCT = 'FAKE'
   const stubs = {
     devices: sinon.stub(HID, 'devices'),
     hid: sinon.stub(HID, 'HID'),
   }
   const hid = new EventEmitter()
 
-  stubs.devices.returns([{ product: PRODUCT }])
+  stubs.devices.returns([
+    {
+      product: 'foo',
+      path: 'bar'
+    },
+    {
+      product: PRODUCT,
+      path: PATH,
+    },
+  ])
   stubs.hid.returns(hid)
 
   t.context.stubs = stubs
@@ -45,6 +56,11 @@ const macro = {
     t.pass()
   },
 }
+
+test.serial('call hid with the correct path of device', (t) => {
+  t.true(t.context.stubs.hid.calledWith(PATH))
+  t.pass()
+})
 
 test.serial('keymap 1', macro.keymap, '1.hex.txt',
   'https://mnzn.net/sod.ac/d/SD01234567\n')
