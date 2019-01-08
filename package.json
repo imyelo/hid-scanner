@@ -2,7 +2,7 @@
   "name": "hid",
   "version": "1.0.0",
   "description": "",
-  "main": "lib",
+  "main": "lib/scanner.js",
   "bin": {
     "hid-scanner": "./bin/hid-scanner"
   },
@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "debug": "^4.1.1",
+    "meow": "^5.0.0",
     "node-hid": "^0.7.6"
   },
   "devDependencies": {

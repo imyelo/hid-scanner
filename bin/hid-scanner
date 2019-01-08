@@ -1,7 +1,26 @@
 #!/usr/bin/env node
+'use strict'
 
+const meow = require('meow')
 const Scanner = require('..')
-const scanner = new Scanner()
+
+/**
+ * The product name of your hid-kb device
+ */
+const PRODUCT = 'SM-2D PRODUCT HID KBW'
+
+const cli = meow(`
+  Usage
+    $ hid-scanner <product-name>
+
+  Examples
+    $ hid-scanner
+
+    $ hid-scanner "${PRODUCT}"
+
+`)
+
+const scanner = new Scanner(cli.input[0] || PRODUCT)
 
 scanner.on('char', (char) => {
   process.stdout.write(char)
