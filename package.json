@@ -19,6 +19,7 @@
   "author": "yelo <zhihuzeye@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@hspkg/chain": "^1.0.1",
     "debug": "^4.1.1",
     "meow": "^5.0.0",
     "node-hid": "^0.7.6"
