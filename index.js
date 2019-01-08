@@ -1,7 +1,7 @@
 const scanner = require('./scanner')
 
 scanner.on('char', (char) => {
-  console.log(char)
+  process.stdout.write(char)
 })
 
 scanner.on('error', (error) => console.error(error))
