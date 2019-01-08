@@ -1,5 +1,5 @@
 {
-  "name": "hid",
+  "name": "hid-scanner",
   "version": "0.0.0",
   "description": "",
   "main": "lib/scanner.js",
