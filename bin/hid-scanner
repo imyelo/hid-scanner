@@ -11,16 +11,37 @@ const PRODUCT = 'SM-2D PRODUCT HID KBW'
 
 const cli = meow(`
   Usage
-    $ hid-scanner <product-name>
+    $ hid-scanner <product-name="${PRODUCT}">
+
+
+  Options
+    --devices   List devices
+
 
   Examples
     $ hid-scanner
-
     $ hid-scanner "${PRODUCT}"
 
-`)
+    $ hid-scanner --devices
 
-const scanner = new Scanner(cli.input[0] || PRODUCT)
+
+`, {
+  flags: {
+    devices: {
+      type: 'boolean',
+      default: false,
+    },
+  },
+})
+
+if (cli.flags.devices) {
+  process.stdout.write(JSON.stringify(Scanner.devices(), null, 2))
+  return
+}
+
+const product = cli.input[0] || PRODUCT
+
+const scanner = new Scanner(product)
 
 scanner.on('char', (char) => {
   process.stdout.write(char)
