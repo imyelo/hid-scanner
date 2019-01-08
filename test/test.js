@@ -26,22 +26,26 @@ test.afterEach((t) => {
   t.context.stubs.hid.restore()
 })
 
-test('keymap', async (t) => {
-  const { scanner, hid } = t.context
+const macro = {
+  async keymap (t, filename, expected) {
+    const { scanner, hid } = t.context
 
-  let string = ''
-  scanner.on('char', (char) => {
-    string += char
-  })
-  scanner.on('error', () => {}) // TODO: remove it
+    let string = ''
+    scanner.on('char', (char) => {
+      string += char
+    })
+    scanner.on('error', () => {}) // TODO: remove it
 
-  const hexes = await fixture('1.hex.txt')
-  hexes.split('\n').forEach((hex) => {
-    hid.emit('data', Buffer.from(hex, 'hex'))
-  })
+    const hexes = await fixture(filename)
+    hexes.split('\n').forEach((hex) => {
+      hid.emit('data', Buffer.from(hex, 'hex'))
+    })
 
-  t.is(string, 'httpsmnznnetsodacdSD01234567')
-  // t.is(string, 'https://mnzn.net/sod/ac/d/SD01234567') // TODO: use instead
+    t.is(string, expected)
+    // t.is(string, 'https://mnzn.net/sod/ac/d/SD01234567') // TODO: use instead
 
-  t.pass()
-})
+    t.pass()
+  },
+}
+
+test('keymap', macro.keymap, '1.hex.txt', 'httpsmnznnetsodacdSD01234567')
