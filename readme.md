@@ -12,7 +12,7 @@ npm i @yelo/hid-scanner --build-from-source --driver=libusb --save
 
 
 ## Usage
-### CLI
+### CLI Usage
 #### Basic
 1. Execute:
 
@@ -47,9 +47,9 @@ hid-scanner --help
 ```
 
 
-### Library API
+### Library Usage
 ```javascript
-const Scanner = require('hid-scanner') // not availale on npm currently, but just for an example here
+const Scanner = require('@yelo/hid-scanner')
 const scanner = new Scanner('SM-2D PRODUCT HID KBW')
 /**
  * or:
