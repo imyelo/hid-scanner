@@ -42,10 +42,11 @@ const macro = {
     })
 
     t.is(string, expected)
-    // t.is(string, 'https://mnzn.net/sod/ac/d/SD01234567') // TODO: use instead
-
     t.pass()
   },
 }
 
-test('keymap', macro.keymap, '1.hex.txt', 'httpsmnznnetsodacdSD01234567')
+test.serial('keymap 1', macro.keymap, '1.hex.txt', 'httpsmnznnetsodacdSD01234567')
+// test.serial('keymap', macro.keymap, '1.hex.txt', 'https://mnzn.net/sod/ac/d/SD01234567') // TODO: use instead
+test.serial('keymap 2', macro.keymap, '2.hex.txt', 'httpsgithubcomimyelotaboverviewfrom20181201to20181231')
+// test.serial('keymap', macro.keymap, '2.hex.txt', 'https://github.com/imyelo?tab=overview&from=2018-12-01&to=2018-12-31') // TODO: use instead
