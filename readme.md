@@ -1,4 +1,5 @@
 # HID Scanner
+> :flashlight: Node.js Library for HID Code Scanner
 
 ## Installation
 ### For Linux
