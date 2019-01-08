@@ -2,7 +2,7 @@
 'use strict'
 
 const meow = require('meow')
-const Scanner = require('..')
+const { Scanner } = require('..')
 
 /**
  * The product name of your hid-kb device
@@ -43,7 +43,10 @@ const product = cli.input[0] || PRODUCT
 
 const scanner = new Scanner(product)
 
-scanner.on('char', (char) => {
+scanner.on('key', ({ char }) => {
+  if (!char) {
+    return
+  }
   process.stdout.write(char)
 })
 

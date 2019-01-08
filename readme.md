@@ -49,7 +49,7 @@ hid-scanner --help
 
 ### Library Usage
 ```javascript
-const Scanner = require('@yelo/hid-scanner')
+const { Scanner } = require('@yelo/hid-scanner')
 const scanner = new Scanner('SM-2D PRODUCT HID KBW')
 /**
  * or:
@@ -57,15 +57,25 @@ const scanner = new Scanner('SM-2D PRODUCT HID KBW')
  */
 
 let string = ''
-scanner.on('char', (char) => {
+scanner.on('key', (event) => {
+  const { name, char } = event
+  if (!char) {
+    console.log(`Press: ${name}`)
+    return
+  }
   if (char === '\n') {
-    console.log(string)
+    console.info(`Input: ${string}`)
     string = ''
     return
   }
   string += char
 })
 ```
+
+#### Key Event Struct
+- **name**, the key name
+- **char**, the character to be typed in
+- **raw**, the raw HID Usage ID (HEX)
 
 
 ## Development
@@ -106,6 +116,22 @@ e.g.:
 
 ```sh
 ./test/helpers/generate-hex.js > ./test/fixtures/0.hex.txt
+```
+
+
+### Keymap
+The keymap file is automatically generated with:
+https://source.android.com/devices/input/keyboard-devices.html#hid-keyboard-and-keypad-page-0x07
+
+#### Generate keymap
+```sh
+npm run generate-keymap
+```
+
+or see all commands by executing:
+
+```sh
+./scripts/keymap-generator.js --help
 ```
 
 

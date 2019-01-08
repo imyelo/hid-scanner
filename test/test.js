@@ -3,7 +3,7 @@ import sinon from 'sinon'
 import HID from 'node-hid'
 import { EventEmitter } from 'events'
 import fixture from './helpers/fixture'
-import Scanner from '../lib/scanner'
+import { Scanner } from '..'
 
 const PRODUCT = 'FAKE_PRODUCT'
 const PATH = 'FAKE_PATH'
@@ -42,7 +42,10 @@ const macro = {
     const { scanner, hid } = t.context
 
     let string = ''
-    scanner.on('char', (char) => {
+    scanner.on('key', ({ char }) => {
+      if (!char) {
+        return
+      }
       string += char
     })
     scanner.on('error', () => {}) // TODO: remove it
