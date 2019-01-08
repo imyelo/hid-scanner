@@ -17,7 +17,7 @@
     "start": "node .",
     "dev": "node-dev .",
     "test": "ava",
-    "release": "np"
+    "release": "np --no-cleanup"
   },
   "keywords": [
     "scanner",
