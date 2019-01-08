@@ -46,5 +46,11 @@ const macro = {
   },
 }
 
-test.serial('keymap 1', macro.keymap, '1.hex.txt', 'https://mnzn.net/sod.ac/d/SD01234567\n')
-test.serial('keymap 2', macro.keymap, '2.hex.txt', 'https://github.com/imyelo?tab=overview&from=2018-12-01&to=2018-12-31\n')
+test.serial('keymap 1', macro.keymap, '1.hex.txt',
+  'https://mnzn.net/sod.ac/d/SD01234567\n')
+
+test.serial('keymap 2', macro.keymap, '2.hex.txt',
+  'https://github.com/imyelo?tab=overview&from=2018-12-01&to=2018-12-31\n')
+
+test.serial('keymap3', macro.keymap, '3.hex.txt',
+  '1234567890-=\\`qwertyuiop[]asdfghjkl;\'zxcvbnm,./ 	!@#$%^&*()_+|~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>?\n')
