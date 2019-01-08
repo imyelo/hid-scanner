@@ -1,4 +1,5 @@
-const scanner = require('./scanner')
+const Scanner = require('./scanner')
+const scanner = new Scanner()
 
 scanner.on('char', (char) => {
   process.stdout.write(char)

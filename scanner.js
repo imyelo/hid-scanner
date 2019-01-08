@@ -8,37 +8,42 @@ const { KEYMAP, SIGNAL } = require('./keymap')
  */
 const PRODUCT = 'SM-2D PRODUCT HID KBW'
 
-/**
- * The event bus of keyboard for outputing chars
- */
-const bus = new EventEmitter()
+class Scanner extends EventEmitter {
+  constructor (product = PRODUCT) {
+    super()
 
-const devices = HID.devices()
-debug(devices)
+    const devices = this.constructor.devices()
+    debug(devices)
 
-const device = devices.find((device) => device.product === PRODUCT)
+    const device = devices.find((device) => device.product === product)
 
-if (!device) {
-  throw new Error('Cannot find device')
+    if (!device) {
+      throw new Error('Cannot find device')
+    }
+
+    const hid = new HID.HID(devices[0].path)
+
+    hid.on('data', (data) => {
+      try {
+        const code = Buffer.from([data[2]]).toString('hex')
+        const signal = Buffer.from([data[0]]).toString('hex')
+        const char = KEYMAP[code][SIGNAL[signal]]
+        debug('HID Data:', data, code, signal, char)
+        if (!char) {
+          return
+        }
+        this.emit('char', char)
+      } catch (error) {
+        error.data = data
+        debug('HID Data parse failed:', error)
+        this.emit('error', error)
+      }
+    })
+  }
+
+  static devices () {
+    return HID.devices()
+  }
 }
 
-const hid = new HID.HID(devices[0].path)
-
-hid.on('data', (data) => {
-  try {
-    const code = Buffer.from([data[2]]).toString('hex')
-    const signal = Buffer.from([data[0]]).toString('hex')
-    const char = KEYMAP[code][SIGNAL[signal]]
-    debug('HID Data:', data, code, signal, char)
-    if (!char) {
-      return
-    }
-    bus.emit('char', char)
-  } catch (error) {
-    error.data = data
-    debug('HID Data parse failed:', error)
-    bus.emit('error', error)
-  }
-})
-
-module.exports = bus
+module.exports = Scanner
