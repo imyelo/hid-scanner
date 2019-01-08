@@ -1,4 +1,6 @@
-const Scanner = require('./lib/scanner')
+#!/usr/bin/env node
+
+const Scanner = require('..')
 const scanner = new Scanner()
 
 scanner.on('char', (char) => {

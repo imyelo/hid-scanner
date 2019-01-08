@@ -2,7 +2,14 @@
   "name": "hid",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib",
+  "bin": {
+    "hid-scanner": "./bin/hid-scanner"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "start": "node .",
     "dev": "node-dev .",
