@@ -1,7 +1,7 @@
 {
-  "name": "hid-scanner",
+  "name": "@yelo/hid-scanner",
   "version": "0.0.0",
-  "description": "",
+  "description": "Node.js Library for HID Code Scanner",
   "main": "lib/scanner.js",
   "bin": {
     "hid-scanner": "./bin/hid-scanner"
@@ -10,12 +10,24 @@
     "bin",
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "node .",
     "dev": "node-dev .",
-    "test": "ava"
+    "test": "ava",
+    "release": "np"
   },
-  "keywords": [],
+  "keywords": [
+    "scanner",
+    "qrcode",
+    "barcode",
+    "hid",
+    "nodejs",
+    "keyboard",
+    "usb"
+  ],
   "author": "yelo <zhihuzeye@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -27,6 +39,7 @@
   "devDependencies": {
     "ava": "^1.0.1",
     "fs-extra": "^7.0.1",
+    "np": "^3.1.0",
     "sinon": "^7.2.2"
   }
 }
