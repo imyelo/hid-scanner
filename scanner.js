@@ -30,6 +30,9 @@ hid.on('data', (data) => {
     const signal = Buffer.from([data[0]]).toString('hex')
     const char = KEYMAP[code][SIGNAL[signal]]
     debug('HID Data:', data, code, signal, char)
+    if (!char) {
+      return
+    }
     bus.emit('char', char)
   } catch (error) {
     error.data = data
