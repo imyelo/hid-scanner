@@ -72,6 +72,7 @@ scanner.on('key', (event) => {
 })
 ```
 
+
 #### Key Event Struct
 - **name**, the key name
 - **char**, the character to be typed in
