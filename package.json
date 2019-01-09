@@ -1,6 +1,6 @@
 {
   "name": "@yelo/hid-scanner",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Node.js Library for HID Code Scanner",
   "main": "lib",
   "bin": {
