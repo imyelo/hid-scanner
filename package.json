@@ -35,6 +35,7 @@
     "@hspkg/chain": "^1.0.1",
     "debug": "^4.1.1",
     "meow": "^5.0.0",
+    "node-cleanup": "^2.1.2",
     "node-hid": "^0.7.6"
   },
   "devDependencies": {

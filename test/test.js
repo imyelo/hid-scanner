@@ -14,6 +14,7 @@ test.beforeEach((t) => {
     hid: sinon.stub(HID, 'HID'),
   }
   const hid = new EventEmitter()
+  hid.close = sinon.spy()
 
   stubs.devices.returns([
     {
